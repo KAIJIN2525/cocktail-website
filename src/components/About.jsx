@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import {SplitText} from "gsap/all";
 import {useGSAP} from "@gsap/react";
+import {profileLists} from "../../constants/index.js";
 
 const About = () => {
     useGSAP(() => {
@@ -40,13 +41,46 @@ const About = () => {
                             Every cocktail we serve is a reflection of our obsession with detail- from the first muddle to the final garnish. That care is what turns a simple drink into something memorable.
                         </p>
 
-                        <div>
-                            <p className="md:text-3xl text-xl font-bold">
-                                <span>4.5</span>/5
-                            </p>
-                            <p className="text-sm text-white-100">
-                                More than +12,000 customers
-                            </p>
+                        <div className="flex flex-row gap-4 items-center justify-between">
+                            {/* Rating section */}
+                            <div>
+                                <p className="md:text-3xl text-xl font-bold">
+                                    <span>4.5</span>/5
+                                </p>
+                                <p className="text-sm text-white-100">
+                                    More than +12,000 customers
+                                </p>
+                            </div>
+
+                            {/* Vertical divider */}
+                            <div className="relative h-16 w-[2px]">
+                                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-200 to-transparent"></div>
+                            </div>
+
+                            {/* Profile images container */}
+                            <div className="relative flex items-center justify-center">
+                                <div className="relative h-16 w-34 flex items-center justify-center image-radial-gradient  rounded-full">
+                                    {/* Profile images */}
+                                    <div className="relative flex flex-row items-center h-12 z-10">
+                                        {profileLists.map((profile, index) => (
+                                            <div
+                                                key={index}
+                                                className="relative transition-all hover:-translate-y-1"
+                                                style={{
+                                                    zIndex: profileLists.length - index,
+                                                    marginLeft: index > 0 ? '-12px' : '0',
+                                                }}
+                                            >
+                                                <img
+                                                    src={profile.imgPath}
+                                                    alt={`Profile ${index + 1}`}
+                                                    className="size-8 rounded-full border-2 border-white object-cover shadow-md"
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

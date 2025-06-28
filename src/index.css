@@ -52,6 +52,15 @@ body {
     );
 }
 
+@utility image-radial-gradient {
+    background: radial-gradient(
+            circle at top,
+            #1f2937 0%,  /* gray-800 */
+            #4b5563 50%,  /* gray-600 */
+            transparent 100%
+    );
+}
+
 @utility masked-img {
     mask-image: url("/images/mask-img.png");
     mask-repeat: no-repeat;
@@ -105,6 +114,10 @@ body {
 
         .body {
             @apply container mx-auto absolute left-1/2 -translate-x-1/2 lg:bottom-20 top-auto md:top-[30vh] flex justify-between items-end px-5;
+
+            .arrow {
+                @apply  absolute top-30 right-0 ;
+            }
 
             .content {
                 @apply flex lg:flex-row flex-col w-full gap-10 justify-between items-center lg:items-end mx-auto;
